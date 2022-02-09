@@ -20,8 +20,9 @@ class Phonebook extends Component {
     componentDidMount() {
         const contacts = localStorage.getItem('contacts');
         const parcedContacts = JSON.parse(contacts);
-
-        this.setState({ contacts: parcedContacts });
+        if (parcedContacts) {
+            this.setState({ contacts: parcedContacts });
+        }
     }
 
     addContact = contact =>
@@ -53,7 +54,7 @@ class Phonebook extends Component {
             contact.name.toLowerCase().includes(this.state.filter.toLowerCase()),
         );
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevState) {
         if (this.state.contacts !== prevState.contacts) {
             localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
         }
