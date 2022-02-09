@@ -1,0 +1,45 @@
+.phonebookForm {
+    display: block;
+    text-align: left;
+    padding: 20px;
+    margin-left: 300px;
+}
+
+h1 {
+    font-size: 40px;
+    color: rgb(38, 17, 53);
+    text-shadow: 5px 5px 5px indigo;
+    font-style: italic;
+}
+
+.title {
+    display: block;
+    margin-right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: indigo;
+    text-shadow: 3px 3px 3px rgb(253, 218, 253);
+}
+
+.input {
+    margin-bottom: 20px;
+    margin-left: 40px;
+    height: 40px;
+    width: 700px;
+    background-color: rgb(253, 218, 253);
+    border-color: rgb(253, 218, 253);
+    box-shadow: 3px 3px 3px indigo;
+    border-radius: 10px;
+}
+
+.title:nth-child(1) {
+    margin-left: 32px;
+}
+
+button {
+    padding: 5px;
+    color:  rgb(253, 218, 253);
+    background-color: indigo;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px indigo;
+}
