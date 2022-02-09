@@ -17,6 +17,13 @@ class Phonebook extends Component {
         filter: ''
     }
 
+    componentDidMount() {
+        const contacts = localStorage.getItem('contacts');
+        const parcedContacts = JSON.parse(contacts);
+
+        this.setState({ contacts: parcedContacts });
+    }
+
     addContact = contact =>
         this.setState(prevState => ({
             contacts: [...prevState.contacts, { id: shortid.generate(), ...contact }],
