@@ -46,6 +46,12 @@ class Phonebook extends Component {
             contact.name.toLowerCase().includes(this.state.filter.toLowerCase()),
         );
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.contacts !== prevState.contacts) {
+            localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+        }
+    }
+
     render() {
         return (
             <div className={s.form}>
