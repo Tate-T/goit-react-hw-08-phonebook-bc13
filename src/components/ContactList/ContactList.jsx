@@ -19,7 +19,7 @@ const ContactList = ({ findContact, deleteContact }) => {
     )
 }
 
-Contacts.propTypes = {
+ContactList.propTypes = {
     findContact: PropTypes.func.isRequired,
     deleteContact: PropTypes.func.isRequired,
 };
