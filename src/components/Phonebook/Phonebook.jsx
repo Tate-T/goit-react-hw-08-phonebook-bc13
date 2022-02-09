@@ -54,10 +54,9 @@ class Phonebook extends Component {
                     isThereThisContact={this.isThereThisContact}
                     addContact={this.addContact} />
                 <div className={s.contactsList}>
-                    <h2 className={s.contactsTitle}>Contacts:</h2>
-                    <Filter filter={this.state.filter} addToFilterState={this.addToFilterState} findContact={this.findContact} handleSubmit={this.handleSubmit} />
                     <ContactList contacts={this.state.contacts} id={this.state.contacts.id} findContact={this.findContact}
                         deleteContact={this.deleteContact} />
+                    <Filter filter={this.state.filter} addToFilterState={this.addToFilterState} findContact={this.findContact} handleSubmit={this.handleSubmit} />
                 </div>
             </div>
         )

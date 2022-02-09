@@ -3,6 +3,13 @@
     margin-left: 250px;
 }
 
+.contactsTitle {
+    font-size: 40px;
+    color: rgb(38, 17, 53);
+    text-shadow: 5px 5px 5px indigo;
+    font-style: italic;
+}
+
 .contactsList {
     background-color: white;
     border: 1px solid indigo;
