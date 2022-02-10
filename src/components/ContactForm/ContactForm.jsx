@@ -13,7 +13,7 @@ const ContactForm = (isThereThisContact, onSubmitAddContact) => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.currentTarget;
-        switch (name, value) {
+        switch ({ name, value }) {
             case "name": setName(value);
                 break;
             case "number": setNumber(value);
