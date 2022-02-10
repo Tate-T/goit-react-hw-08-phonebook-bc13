@@ -64,7 +64,7 @@ class Phonebook extends Component {
         return (
             <div className={s.form}>
                 <h1>Phonebook</h1>
-                <ContactForm name={this.state.name} number={this.state.number} onChange={this.handleInputChange} onSubmit={this.addContact}
+                <ContactForm name={this.state.name} number={this.state.number} onChange={this.handleInputChange} onSubmitAddContact={this.addContact}
                     isThereThisContact={this.isThereThisContact}
                     addContact={this.addContact} />
                 <div className={s.contactsList}>

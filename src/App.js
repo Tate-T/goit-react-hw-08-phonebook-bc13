@@ -1,14 +1,11 @@
-import { Component } from 'react';
 import Phonebook from './components/Phonebook/Phonebook';
 
 
-class App extends Component {
+const App = () => {
 
-  render() {
-    return (
-      <Phonebook />
-    );
-  }
+  return (
+    <Phonebook />
+  );
 }
 
 export default App;
