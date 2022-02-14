@@ -48,8 +48,8 @@ const Phonebook = () => {
             contact.name.toLowerCase().includes(filter.toLowerCase()),
         );
 
-    useEffect((prevState) => {
-        contacts !== prevState && localStorage.setItem('contacts', JSON.stringify(contacts))
+    useEffect(() => {
+        localStorage.setItem('contacts', JSON.stringify(contacts))
     }, [contacts])
 
     return (
