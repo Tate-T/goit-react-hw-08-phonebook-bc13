@@ -1,17 +1,32 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
+// import { createStore, combineReducers } from 'redux';
+// import { composeWithDevTools } from '@redux-devtools/extension';
+import { configureStore } from "@testing-library/react";
+import contactsReducer from './contactsReducer';
+import filterReducer from './filterReducer';
 
-// const reducer = (state = {}, action) => state;
-
-const rootReducer = combineReducers(
-    {
+const store = configureStore({
+    reducer: {
         contacts: {
-            items: [],
-            filter: ''
+            items: contactsReducer, // []
+            filter: filterReducer // ''
         }
-    }
-)
-
-const store = createStore(rootReducer, composeWithDevTools());
+    },
+    // devTools: process.env.NODE_ENV !== 'production', // true
+});
 
 export default store;
+
+// // const reducer = (state = {}, action) => state;
+
+// const rootReducer = combineReducers(
+//     {
+//         contacts: {
+//             items: [],
+//             filter: ''
+//         }
+//     }
+// )
+
+// const store = createStore(rootReducer, composeWithDevTools());
+
+// export default store;
