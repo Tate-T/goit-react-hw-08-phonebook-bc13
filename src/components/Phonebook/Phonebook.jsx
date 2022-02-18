@@ -4,6 +4,7 @@ import ContactList from '../ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import shortid from 'shortid';
 import s from './Phonebook.module.css';
+// import { actionFilter, actionFilterReset } from '../../redux/';
 
 const initialState = [
     { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
