@@ -19,6 +19,10 @@ const ContactForm = (isThereThisContact, onSubmitAddContact) => {
             case "number": setNumber(value);
                 break;
             default: return
+
+            //     const { value } = e.currentTarget;
+            // setName(value);
+            // setNumber(value)
         }
     }
 

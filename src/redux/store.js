@@ -1,8 +1,7 @@
 // import { createStore, combineReducers } from 'redux';
 // import { composeWithDevTools } from '@redux-devtools/extension';
 import { configureStore } from "@testing-library/react";
-import contactsReducer from './contactsReducer';
-import filterReducer from './filterReducer';
+import { contactsReducer, filterReducer } from './contactsReducer';
 
 const store = configureStore({
     reducer: {

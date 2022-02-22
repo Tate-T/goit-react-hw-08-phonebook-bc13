@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { actionContacts, actionFilter } from './filterActions';
+import { actionContacts, actionFilter } from './contactsActions';
 
 const filterReducer = createReducer('', {
     [actionFilter]: (state, action) => state + action.filter,
