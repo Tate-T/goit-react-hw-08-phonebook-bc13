@@ -1,5 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import shortid from 'shortid';
+import actions from './contactsActions';
+import { combineReducers } from "redux";
 
 const initialState = [
     { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
@@ -8,13 +10,14 @@ const initialState = [
     { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-export const сontactsReducer = createReducer(initialState, {
-    'phonebook/addContact': (state, { payload }) => [...state, payload],
-    'phonebook/deleteContact': (state, { payload }) =>
+const сontactsReducer = createReducer(initialState, {
+    [actions.addContact]: (state, { payload }) => [...state, payload],
+    [actions.deleteContact]: (state, { payload }) =>
         state.filter(contact => contact.id !== payload)
 });
 
-export const filterReducer = createReducer('', {
-    'phonebook/addToFilterState': (_, { payload }) => payload,
+const filterReducer = createReducer('', {
+    [actions.addToFilterState]: (_, { payload }) => payload,
 });
 
+export default combineReducers({ сontactsReducer, filterReducer });
