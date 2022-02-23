@@ -1,5 +1,4 @@
-// import { createReducer } from "@reduxjs/toolkit";
-// import { actionContacts } from './contactsActions';
+import { createReducer } from "@reduxjs/toolkit";
 import shortid from 'shortid';
 
 const initialState = [
@@ -9,30 +8,13 @@ const initialState = [
     { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-export const сontactsReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case 'phonebook/addContact':
-            return [...state, payload]
-        case 'phonebook/deleteContact':
-            return state.filter(contact => contact.id !== payload)
+export const сontactsReducer = createReducer(initialState, {
+    'phonebook/addContact': (state, { payload }) => [...state, payload],
+    'phonebook/deleteContact': (state, { payload }) =>
+        state.filter(contact => contact.id !== payload)
+});
 
-        default: return state;
-    }
-}
-
-export const filterReducer = (state = '', { type, payload }) => {
-    switch (type) {
-
-        case 'phonebook/addToFilterState':
-            return payload
-
-        default: return state;
-    }
-};
-
-// export const filterReducer = createReducer('', {
-//     [actionFilter]: (state, action) => state + action.filter,
-//     [actionContacts]: (state, action) => state + action.filterReset
-//     // ...
-// });
+export const filterReducer = createReducer('', {
+    'phonebook/addToFilterState': (_, { payload }) => payload,
+});
 
