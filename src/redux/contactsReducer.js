@@ -45,10 +45,21 @@ export const ContactsReducer = ({
     }
 };
 
-// const filterReducer = createReducer('', {
+// export const filterReducer = () => {
+
+// }
+
+// export const filterReducer = createReducer('', {
 //     [actionFilter]: (state, action) => state + action.filter,
 //     [actionContacts]: (state, action) => state + action.filterReset
 //     // ...
 // });
 
-// export default filterReducer
+// const rootReducer = combineReducers(
+//     {
+//         contacts: {
+//             items: [],
+//             filter: ''
+//         }
+//     }
+// )

@@ -3,15 +3,6 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 // import { configureStore } from "@testing-library/react";
 import { ContactsReducer } from './contactsReducer';
 
-// const rootReducer = combineReducers(
-//     {
-//         contacts: {
-//             items: [],
-//             filter: ''
-//         }
-//     }
-// )
-
 const store = createStore(ContactsReducer, composeWithDevTools(applyMiddleware([])));
 
 export default store;
