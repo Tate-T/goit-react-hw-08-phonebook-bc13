@@ -1,6 +1,6 @@
-import { persistStore, persistReducer } from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { configureStore } from "@testing-library/react";
+import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from './contactsReducer';
 
 const persistConfig = {
