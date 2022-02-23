@@ -1,6 +1,5 @@
 import Phonebook from './components/Phonebook/Phonebook';
 
-
 const App = () => {
 
   return (

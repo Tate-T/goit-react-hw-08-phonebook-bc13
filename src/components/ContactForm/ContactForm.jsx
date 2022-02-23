@@ -1,28 +1,21 @@
 import { useState } from 'react';
 import s from './ContactForm.module.css';
+import { connect } from 'react-redux';
+import * as contactsActions from '../../redux/contactsActions';
 
-const initialForm = {
-    name: '',
-    number: ''
-}
+const ContactForm = ({ isThereThisContact, onSubmitAddContact }) => {
 
-const ContactForm = (isThereThisContact, onSubmitAddContact) => {
-    const [form, setForm] = useState(initialForm);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.currentTarget;
-        switch ({ name, value }) {
+        switch (name) {
             case "name": setName(value);
                 break;
             case "number": setNumber(value);
                 break;
             default: return
-
-            //     const { value } = e.currentTarget;
-            // setName(value);
-            // setNumber(value)
         }
     }
 
@@ -32,8 +25,9 @@ const ContactForm = (isThereThisContact, onSubmitAddContact) => {
             alert(`${name} already exist`)
             return
         }
-        onSubmitAddContact({ ...form, name }) // ???
-        setForm(initialForm);
+        onSubmitAddContact({ name, number })
+        setName('');
+        setNumber('')
     }
 
     return (
@@ -69,4 +63,18 @@ const ContactForm = (isThereThisContact, onSubmitAddContact) => {
     )
 }
 
-export default ContactForm
+const mapStateToProps = state => {
+    return {
+        contacts: state.contacts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmitAddContact: () => dispatch(contactsActions.addContact()),
+        isThereThisContact: () => dispatch(contactsActions.isThereThisContact()),
+        addContact: () => dispatch(contactsActions.addContact()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

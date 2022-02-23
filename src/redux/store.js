@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 // import { configureStore } from "@testing-library/react";
-import { ContactsReducer } from './contactsReducer';
+import { rootReducer } from './contactsReducer';
 
-const store = createStore(ContactsReducer, composeWithDevTools(applyMiddleware([])));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware([])));
 
 export default store;
 

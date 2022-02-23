@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
+import { connect } from 'react-redux';
+import * as contactsActions from '../../redux/contactsActions';
 
 const ContactList = ({ findContact, deleteContact }) => {
     return (
@@ -9,7 +11,7 @@ const ContactList = ({ findContact, deleteContact }) => {
                 {findContact().map(contact => (
                     <li className={s.contactsItem} key={contact.id}>
                         <p className={s.contactName}>{contact.name}: {contact.number}</p>
-                        <button type="button" className={s.deleteBtn} id={contact.id} onClick={deleteContact}>
+                        <button type="button" className={s.deleteBtn} id={contact.id} onClick={(e) => deleteContact(e.target.id)}>
                             Delete
                         </button>
                     </li>
@@ -25,4 +27,20 @@ ContactList.propTypes = {
     deleteContact: PropTypes.func.isRequired,
 };
 
-export default ContactList
+
+const mapStateToProps = state => {
+    return {
+        contacts: state.contacts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        findContact: () => dispatch(contactsActions.findContact()),
+        deleteContact: () => dispatch(contactsActions.deleteContact()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+
+

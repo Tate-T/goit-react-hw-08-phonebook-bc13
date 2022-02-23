@@ -4,10 +4,8 @@ import ContactList from '../ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import s from './Phonebook.module.css';
 // import { actionFilter, actionFilterReset } from '../../redux/';
-import { connect } from 'react-redux';
-import * as contactsActions from '../../redux/contactsActions';
 
-export const Phonebook = ({
+const Phonebook = ({
     contacts,
     filter,
     addContact,
@@ -26,31 +24,14 @@ export const Phonebook = ({
             <div className={s.contactsList}>
                 <ContactList contacts={contacts} id={contacts.id} findContact={() => findContact(contacts)}
                     deleteContact={() => deleteContact(contacts)} />
-                <Filter filter={filter} addToFilterState={() => addToFilterState(filter)} findContact={() => findContact(contacts)} />
+                <Filter filter={filter} addToFilterState={() => addToFilterState(filter)} />
             </div>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        contacts: state.contacts,
-        filter: state.contacts
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onSubmitAddContact: () => dispatch(contactsActions.addContact()),
-        isThereThisContact: () => dispatch(contactsActions.isThereThisContact()),
-        addContact: () => dispatch(contactsActions.addContact()),
-        findContact: () => dispatch(contactsActions.findContact()),
-        deleteContact: () => dispatch(contactsActions.deleteContact()),
-        addToFilterState: () => dispatch(contactsActions.addToFilterState()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Phonebook);
+export default Phonebook;
 
 // const [contacts, setContacts] = useState(initialState);
     // const [filter, setFilter] = useState('');

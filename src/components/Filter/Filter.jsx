@@ -1,4 +1,5 @@
-
+import { connect } from 'react-redux';
+import * as contactsActions from '../../redux/contactsActions';
 import s from './Filter.module.css';
 
 const Filter = ({ filter, addToFilterState }) => {
@@ -11,12 +12,25 @@ const Filter = ({ filter, addToFilterState }) => {
                     type="text"
                     name="filter"
                     value={filter}
-                    onChange={addToFilterState}
+                    onChange={(e) => { addToFilterState(e.target.value) }}
                     className={s.filterInput}
                 />
             </label>
         </div>
     );
+
 }
 
-export default Filter
+const mapStateToProps = state => {
+    return {
+        filter: state.contacts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToFilterState: (filter) => dispatch(contactsActions.addToFilterState(filter)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

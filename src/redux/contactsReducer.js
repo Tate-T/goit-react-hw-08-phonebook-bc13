@@ -1,6 +1,7 @@
-import shortid from 'shortid';
 // import { createReducer } from "@reduxjs/toolkit";
 // import { actionContacts } from './contactsActions';
+import { combineReducers } from 'redux';
+import shortid from 'shortid';
 
 const initialState = [
     { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
@@ -9,45 +10,40 @@ const initialState = [
     { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-export const ContactsReducer = ({
-    state = initialState,
-    filter = '',
-    type,
-    payload,
-    name,
-    e }) => {
+export const сontactsReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case 'phonebook/addContact':
-            return {
-                ...state,
-                contact: { id: shortid.generate(), ...payload }
-            };
-
+            return [...state, payload]
         case 'phonebook/deleteContact':
-            return {
-                contact: state.filter(contact => contact.id !== e.target.id)
-            }
+            return state.filter(contact => contact.id !== payload)
+        default: return state;
+    }
+}
+
+const initialForm = {
+    name: '',
+    number: ''
+}
+
+export const filterReducer = (state = initialForm, { type, payload }) => {
+    switch (type) {
 
         case 'phonebook/addToFilterState':
-            return { filter: e.target.value }
+            return payload
 
         case 'phonebook/isThereThisContact':
             return state.some(
-                contact => contact.name.toLowerCase() === name.toLowerCase(),
+                contact => contact.name.toLowerCase() === payload,
             );
 
         case 'phonebook/findContact':
             return state.filter(contact =>
-                contact.name.toLowerCase().includes(filter.toLowerCase()),
+                contact.name.toLowerCase().includes(payload),
             );
 
         default: return state;
     }
 };
-
-// export const filterReducer = () => {
-
-// }
 
 // export const filterReducer = createReducer('', {
 //     [actionFilter]: (state, action) => state + action.filter,
@@ -55,11 +51,9 @@ export const ContactsReducer = ({
 //     // ...
 // });
 
-// const rootReducer = combineReducers(
-//     {
-//         contacts: {
-//             items: [],
-//             filter: ''
-//         }
-//     }
-// )
+export const rootReducer = combineReducers(
+    {
+        contacts: сontactsReducer,
+        filter: filterReducer
+    }
+)
