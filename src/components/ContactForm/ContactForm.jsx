@@ -25,7 +25,6 @@ const ContactForm = ({ contacts, onSubmitAddContact }) => {
         );
     }
 
-
     const onSubmit = (e) => {
         e.preventDefault()
         if (isThereThisContact(name)) {
@@ -73,7 +72,6 @@ const ContactForm = ({ contacts, onSubmitAddContact }) => {
 const mapDispatchToProps = dispatch => {
     return {
         onSubmitAddContact: (contact) => dispatch(contactsActions.addContact(contact)),
-        isThereThisContact: (contact) => dispatch(contactsActions.isThereThisContact(contact)),
     }
 }
 

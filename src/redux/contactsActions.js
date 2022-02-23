@@ -19,13 +19,4 @@ export const addToFilterState = filter => ({
     payload: filter,
 });
 
-export const isThereThisContact = name => ({
-    type: 'phonebook/isThereThisContact',
-    payload: name.toLowerCase(),
-});
-
-export const findContact = filter => ({
-    type: 'phonebook/findContact',
-    payload: filter,
-});
 
