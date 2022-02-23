@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import { connect } from 'react-redux';
 import * as contactsActions from '../../redux/contactsActions';
-// import { useCallback } from 'react';
 
 const ContactList = ({ filter, contacts, deleteContact }) => {
     const findContact = () => {
@@ -10,11 +9,6 @@ const ContactList = ({ filter, contacts, deleteContact }) => {
             contact.name.toLowerCase().includes(filter?.toLowerCase())
         );
     }
-
-
-    // useEffect(() => {
-    //     findContact()
-    // }, [findContact])
 
     return (
         <div className={s.contactsSection}>
