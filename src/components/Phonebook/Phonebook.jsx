@@ -32,30 +32,6 @@ export default Phonebook;
     //     }
     // }, [])
 
-
-    // const addContact = contact =>
-    //     setContacts(prevState => [...prevState.contacts, { id: shortid.generate(), ...contact }]);
-
-    // const deleteContact = e => {
-    //     const id = e.target.id;
-    //     setContacts(prev => prev.filter(contact => contact.id !== id));
-    // };
-
-    // const addToFilterState = (e) => {
-    //     const filter = e.target.value;
-    //     setFilter({ filter: filter });
-    // }
-
-    // const isThereThisContact = name =>
-    //     contacts.some(
-    //         contact => contact.name.toLowerCase() === name.toLowerCase(),
-    //     );
-
-    // const findContact = () =>
-    //     contacts.filter(contact =>
-    //         contact.name.toLowerCase().includes(filter.toLowerCase()),
-    //     );
-
     // useEffect(() => {
     //     localStorage.setItem('contacts', JSON.stringify(contacts))
     // }, [contacts])

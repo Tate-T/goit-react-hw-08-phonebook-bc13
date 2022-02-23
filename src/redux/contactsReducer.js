@@ -1,7 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import shortid from 'shortid';
 // import actions from './contactsActions';
-// import { combineReducers } from "redux";
 
 const initialState = [
     { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
