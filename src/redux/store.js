@@ -6,14 +6,14 @@ import * as reducer from './contactsReducer';
 
 // const persistedReducer = persistReducer(persistConfig, reducer.сontactsReducer, reducer.filterReducer);
 
-const middleWare = [...getDefaultMiddleware(), logger];
+const middleware = [...getDefaultMiddleware(), logger];
 
 export const store = configureStore({
     reducer: {
         contacts: reducer.сontactsReducer,
         filter: reducer.filterReducer
     },
-    middleWare,
+    middleware,
     devTools: process.env.NODE_ENV !== 'production', // true
 });
 
