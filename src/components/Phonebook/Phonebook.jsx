@@ -19,7 +19,6 @@ const Phonebook = () => {
     )
 }
 
-
 export default Phonebook;
 
 // const [contacts, setContacts] = useState(initialState);
