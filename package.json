@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-06-phonebook-bc13",
+  "name": "goit-react-hw-06-phonebook-bc13-Redux-Toolkit",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Tate-T.github.io/goit-react-hw-06-phonebook-bc13",
+  "homepage": "https://Tate-T.github.io/goit-react-hw-06-phonebook-bc13-Redux-Toolkit",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.2",
     "@reduxjs/toolkit": "^1.7.2",
