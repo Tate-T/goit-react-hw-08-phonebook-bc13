@@ -1,11 +1,21 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from '@redux-devtools/extension';
 // import { configureStore } from "@testing-library/react";
 import { rootReducer } from './contactsReducer';
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware([])));
+const persistConfig = {
+    key: 'root',
+    storage,
+}
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(persistedReducer, composeWithDevTools());
+
+export const persistor = persistStore(store);
+
 
 // const store = configureStore({
 //     reducer: {

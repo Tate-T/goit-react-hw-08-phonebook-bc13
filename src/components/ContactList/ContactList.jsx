@@ -2,8 +2,20 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import { connect } from 'react-redux';
 import * as contactsActions from '../../redux/contactsActions';
+// import { useCallback } from 'react';
 
-const ContactList = ({ findContact, deleteContact }) => {
+const ContactList = ({ filter, contacts, deleteContact }) => {
+    const findContact = () => {
+        return contacts.filter(contact =>
+            contact.name.toLowerCase().includes(filter?.toLowerCase())
+        );
+    }
+
+
+    // useEffect(() => {
+    //     findContact()
+    // }, [findContact])
+
     return (
         <div className={s.contactsSection}>
             <h2 className={s.contactsTitle}>Contacts:</h2>
@@ -11,7 +23,7 @@ const ContactList = ({ findContact, deleteContact }) => {
                 {findContact().map(contact => (
                     <li className={s.contactsItem} key={contact.id}>
                         <p className={s.contactName}>{contact.name}: {contact.number}</p>
-                        <button type="button" className={s.deleteBtn} id={contact.id} onClick={(e) => deleteContact(e.target.id)}>
+                        <button type="button" className={s.deleteBtn} onClick={() => deleteContact(contact.id)}>
                             Delete
                         </button>
                     </li>
@@ -23,21 +35,20 @@ const ContactList = ({ findContact, deleteContact }) => {
 }
 
 ContactList.propTypes = {
-    findContact: PropTypes.func.isRequired,
     deleteContact: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = state => {
     return {
-        contacts: state.contacts
+        contacts: state.contacts,
+        filter: state.filter
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        findContact: () => dispatch(contactsActions.findContact()),
-        deleteContact: () => dispatch(contactsActions.deleteContact()),
+        deleteContact: (id) => dispatch(contactsActions.deleteContact(id)),
     }
 }
 

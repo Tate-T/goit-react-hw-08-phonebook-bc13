@@ -26,6 +26,6 @@ export const isThereThisContact = name => ({
 
 export const findContact = filter => ({
     type: 'phonebook/findContact',
-    payload: filter.toLowerCase(),
+    payload: filter,
 });
 

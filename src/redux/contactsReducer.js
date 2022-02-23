@@ -16,30 +16,16 @@ export const сontactsReducer = (state = initialState, { type, payload }) => {
             return [...state, payload]
         case 'phonebook/deleteContact':
             return state.filter(contact => contact.id !== payload)
+
         default: return state;
     }
 }
 
-const initialForm = {
-    name: '',
-    number: ''
-}
-
-export const filterReducer = (state = initialForm, { type, payload }) => {
+export const filterReducer = (state = '', { type, payload }) => {
     switch (type) {
 
         case 'phonebook/addToFilterState':
             return payload
-
-        case 'phonebook/isThereThisContact':
-            return state.some(
-                contact => contact.name.toLowerCase() === payload,
-            );
-
-        case 'phonebook/findContact':
-            return state.filter(contact =>
-                contact.name.toLowerCase().includes(payload),
-            );
 
         default: return state;
     }

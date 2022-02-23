@@ -23,7 +23,7 @@ const Filter = ({ filter, addToFilterState }) => {
 
 const mapStateToProps = state => {
     return {
-        filter: state.contacts
+        filter: state.filter
     }
 }
 

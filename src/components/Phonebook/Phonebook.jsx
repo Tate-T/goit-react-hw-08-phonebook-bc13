@@ -5,26 +5,15 @@ import Filter from 'components/Filter/Filter';
 import s from './Phonebook.module.css';
 // import { actionFilter, actionFilterReset } from '../../redux/';
 
-const Phonebook = ({
-    contacts,
-    filter,
-    addContact,
-    isThereThisContact,
-    findContact,
-    deleteContact,
-    addToFilterState
-}) => {
+const Phonebook = () => {
 
     return (
         <div className={s.form}>
             <h1>Phonebook</h1>
-            <ContactForm name={contacts.name} number={contacts.number} onSubmitAddContact={() => addContact(contacts.name, contacts.number)}
-                isThereThisContact={() => isThereThisContact(contacts.name)}
-                addContact={() => addContact(contacts)} />
+            <ContactForm />
             <div className={s.contactsList}>
-                <ContactList contacts={contacts} id={contacts.id} findContact={() => findContact(contacts)}
-                    deleteContact={() => deleteContact(contacts)} />
-                <Filter filter={filter} addToFilterState={() => addToFilterState(filter)} />
+                <ContactList />
+                <Filter />
             </div>
         </div>
     )

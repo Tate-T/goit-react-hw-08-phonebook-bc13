@@ -3,7 +3,7 @@ import s from './ContactForm.module.css';
 import { connect } from 'react-redux';
 import * as contactsActions from '../../redux/contactsActions';
 
-const ContactForm = ({ isThereThisContact, onSubmitAddContact }) => {
+const ContactForm = ({ contacts, onSubmitAddContact }) => {
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -18,6 +18,13 @@ const ContactForm = ({ isThereThisContact, onSubmitAddContact }) => {
             default: return
         }
     }
+
+    const isThereThisContact = (payload) => {
+        return contacts?.some(
+            contact => contact.name.toLowerCase() === payload,
+        );
+    }
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -63,18 +70,11 @@ const ContactForm = ({ isThereThisContact, onSubmitAddContact }) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        contacts: state.contacts
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitAddContact: () => dispatch(contactsActions.addContact()),
-        isThereThisContact: () => dispatch(contactsActions.isThereThisContact()),
-        addContact: () => dispatch(contactsActions.addContact()),
+        onSubmitAddContact: (contact) => dispatch(contactsActions.addContact(contact)),
+        isThereThisContact: (contact) => dispatch(contactsActions.isThereThisContact(contact)),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(null, mapDispatchToProps)(ContactForm);
