@@ -1,11 +1,18 @@
-// import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import s from './Phonebook.module.css';
+import { useDispatch } from 'react-redux';
+import { getContacts } from 'redux/contactsOperations';
 // import { actionFilter, actionFilterReset } from '../../redux/';
 
 const Phonebook = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getContacts());
+    }, [dispatch]);
 
     return (
         <div className={s.form}>
