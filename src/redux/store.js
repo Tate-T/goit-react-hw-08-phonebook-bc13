@@ -1,9 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { сontactsReducer, filterReducer, isLoadingReducer, errorReducer } from './contactsReducer';
 
-// import logger from "redux-logger";
-// const middleware = [...getDefaultMiddleware(), logger];
-
 export const store = configureStore({
     reducer: {
         contacts: сontactsReducer,
