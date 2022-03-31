@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import shortid from 'shortid';
-import { addContact, getContacts, deleteContact, findContact } from './contactsOperations';
+import { addContact, getContacts, deleteContact } from './contactsOperations';
+import { addToFilterState } from './filterAction';
 
 const initialState = [
     { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
@@ -41,6 +42,6 @@ export const errorReducer = createReducer(null, {
 });
 
 export const filterReducer = createReducer('', {
-    [findContact]: (_, { payload }) => payload,
+    [addToFilterState]: (_, { payload }) => payload,
 
 });

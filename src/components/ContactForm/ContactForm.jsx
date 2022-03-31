@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import s from './ContactForm.module.css';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import * as contactsActions from '../../redux/contactsActions';
 import { addContact } from '../../redux/contactsOperations';
 
 const ContactForm = ({ contacts, onSubmitAddContact }) => {
@@ -81,7 +80,7 @@ const ContactForm = ({ contacts, onSubmitAddContact }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitAddContact: (contact) => dispatch(contactsActions.addContactApiRequest(contact)),
+        onSubmitAddContact: (contact) => dispatch(addContact(contact)),
     }
 }
 
