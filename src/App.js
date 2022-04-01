@@ -1,13 +1,18 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { useEffect, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
-import PhonebookView from './views/PhonebookView/PhonebookView';
-import HomeView from './views/HomeView';
-import RegisterView from './views/RegisterView';
-import LoginView from './views/LoginView';
 import Container from './components/Container/Container';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 import { fetchCurrentUser } from './redux/auth/authOperations';
+import { getIsFetchingCurrent } from './redux/auth/authSelectors';
+
+const HomeView = lazy(() => import('./views/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const PhonebookView = lazy(() => import('./views/PhonebookView/PhonebookView'));
+// const UploadView = lazy(() => import('./views/UploadView'));
 
 // const styles = {
 //   header: {
@@ -24,6 +29,7 @@ import { fetchCurrentUser } from './redux/auth/authOperations';
 
 export default function App() {
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -31,17 +37,34 @@ export default function App() {
 
   return (
     <Container>
-      <AppBar />
-      {/* <header style={styles.header}>
+      {isFetchingCurrentUser ? (
+        <h1>Показываем React Skeleton</h1>
+      ) : (
+        <>
+          <AppBar />
+          {/* <header style={styles.header}>
         PHONEBOOK
       </header> */}
 
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/register" component={RegisterView} />
-        <Route path="/login" component={LoginView} />
-        <Route path="/phonebook" component={PhonebookView} />
-      </Switch>
+          <Suspense fallback={<p>Загружаем...</p>}>
+            <PublicRoute exact path="/">
+              <HomeView />
+            </PublicRoute>
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+            <PublicRoute exact path="/login" redirectTo="/phonebook" restricted>
+              <LoginView />
+            </PublicRoute>
+            <PrivateRoute path="/phonebook" redirectTo="/login">
+              <PhonebookView />
+            </PrivateRoute>
+            {/* <PrivateRoute path="/upload" redirectTo="/login">
+              <UploadView />
+            </PrivateRoute> */}
+          </Suspense>
+        </>
+      )};
     </Container>
   );
 }
