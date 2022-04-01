@@ -2,12 +2,14 @@ import { useState } from 'react';
 import s from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/contactsOperations';
+import { getContacts } from '../../redux/contacts/contactsSelectors';
 
-const ContactForm = ({ contacts }) => {
+const ContactForm = () => {
 
     const dispatch = useDispatch();
 
     const isLoading = useSelector(state => state.contacts.isLoading);
+    const contacts = useSelector(getContacts);
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -23,9 +25,9 @@ const ContactForm = ({ contacts }) => {
         }
     }
 
-    const isThereThisContact = (payload) => {
+    const isThereThisContact = (name) => {
         return contacts?.some(
-            contact => contact.name.toLowerCase() === payload,
+            contact => contact.name.toLowerCase() === name.toLowerCase(),
         );
     }
 
