@@ -6,14 +6,14 @@ import PhonebookView from './views/PhonebookView/PhonebookView';
 import HomeView from './views/HomeView';
 import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
-import Container from './components/Container';
-import { authOperations } from './redux/auth';
+import Container from './components/Container/Container';
+import { fetchCurrentUser } from './redux/auth/authOperations';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   return (

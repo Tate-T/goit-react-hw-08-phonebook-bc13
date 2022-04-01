@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { сontactsReducer, filterReducer, isLoadingReducer, errorReducer } from './contacts/contactsReducer';
-import { authReducer } from './auth';
+import * as authReducer from './auth/authSlice';
 
 const middleware = [
     ...getDefaultMiddleware({

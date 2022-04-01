@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {
+export const token = {
     set(token) {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
@@ -12,7 +12,7 @@ const token = {
     },
 };
 
-const register = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
+export const register = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
     try {
         const { data } = await axios.post('/users/signup', credentials);
         token.set(data.token);
@@ -23,7 +23,7 @@ const register = createAsyncThunk('auth/register', async (credentials, thunkApi)
 });
 
 
-const logIn = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
+export const logIn = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
     try {
         const { data } = await axios.post('/users/login', credentials);
         token.set(data.token);
@@ -33,7 +33,7 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
     }
 });
 
-const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
         token.unset();
@@ -42,7 +42,7 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-const fetchCurrentUser = createAsyncThunk(
+export const fetchCurrentUser = createAsyncThunk(
     'auth/refresh',
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
@@ -62,10 +62,9 @@ const fetchCurrentUser = createAsyncThunk(
     },
 );
 
-const operations = {
+export const operations = {
     register,
     logOut,
     logIn,
     fetchCurrentUser,
 };
-export default operations;
