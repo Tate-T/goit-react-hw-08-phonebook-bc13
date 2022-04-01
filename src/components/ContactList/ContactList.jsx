@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import { connect } from 'react-redux';
-import { deleteContact, findContact } from '../../redux/contactsOperations';
+import { deleteContact, findContact } from '../../redux/contacts/contactsOperations';
 
 const ContactList = ({ filter, contacts, deleteContact }) => {
     const findContact = () => {

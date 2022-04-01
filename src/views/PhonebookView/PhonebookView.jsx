@@ -4,7 +4,7 @@ import ContactList from '../../components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import s from './PhonebookView.module.css';
 import { useDispatch } from 'react-redux';
-import { getContacts } from 'redux/contactsOperations';
+import { getContacts } from 'redux/contacts/contactsOperations';
 // import { actionFilter, actionFilterReset } from '../../redux/';
 
 const Phonebook = () => {

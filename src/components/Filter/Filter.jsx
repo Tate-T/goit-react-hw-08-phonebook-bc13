@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addToFilterState } from '../../redux/filterAction';
+import { addToFilterState } from '../../redux/contacts/filterAction';
 import s from './Filter.module.css';
 
 const Filter = ({ filter, addToFilterState }) => {
