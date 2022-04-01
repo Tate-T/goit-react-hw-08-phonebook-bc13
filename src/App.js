@@ -38,7 +38,7 @@ export default function App() {
   return (
     <Container>
       {isFetchingCurrentUser ? (
-        <h1>Показываем React Skeleton</h1>
+        <h1>Показываем</h1>
       ) : (
         <>
           <AppBar />
