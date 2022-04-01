@@ -9,6 +9,19 @@ import LoginView from './views/LoginView';
 import Container from './components/Container/Container';
 import { fetchCurrentUser } from './redux/auth/authOperations';
 
+// const styles = {
+//   header: {
+//     marginTop: '250px',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     fontSize: '100px',
+//     color: 'rgb(38, 17, 53)',
+//     textShadow: '5px 5px 5px indigo',
+//     fontStyle: 'italic'
+//   },
+// };
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -19,6 +32,9 @@ export default function App() {
   return (
     <Container>
       <AppBar />
+      {/* <header style={styles.header}>
+        PHONEBOOK
+      </header> */}
 
       <Switch>
         <Route exact path="/" component={HomeView} />

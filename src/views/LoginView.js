@@ -5,6 +5,7 @@ import { logIn } from '../redux/auth/authOperations';
 const styles = {
     form: {
         width: 320,
+        justifyContent: 'center',
     },
     label: {
         display: 'flex',

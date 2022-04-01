@@ -17,11 +17,13 @@ const styles = {
 const HomeView = () => (
     <div style={styles.container}>
         <h1 style={styles.title}>
-            Welcome to Phonebook!
-            ADD YOUR CONTACTS
+            Welcome to Phonebook! <br />
+
             <span role="img" aria-label="Иконка приветствия">
                 💁‍♀️
             </span>
+            <br />
+            ADD YOUR CONTACTS
         </h1>
     </div>
 );
