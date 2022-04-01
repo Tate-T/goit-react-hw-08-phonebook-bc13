@@ -30,6 +30,10 @@ export const authSlice = createSlice({
             state.user = action.payload;
             state.isLoggedIn = true;
         },
+        [fetchCurrentUser.rejected](state, action) {
+            state.token = null;
+            state.isLoggedIn = false;
+        },
     },
 });
 
